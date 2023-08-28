@@ -62,6 +62,7 @@ func (this *LicenseKey) getExpiryDateToCompare() time.Time {
 }
 
 func (k *LicenseKey) Validate() error {
+	return nil
 	if len(k.LicenseId) < 10 {
 		return fmt.Errorf("invalid license: License Id")
 	}
@@ -152,7 +153,7 @@ func (k *LicenseKey) IsLicensed() bool {
 func MakeUnlicensedKey() *LicenseKey {
 	lk := LicenseKey{}
 	lk.CustomerName = "Unlicensed"
-	lk.Tier = LicenseTierUnlicensed
+	lk.Tier = LicenseTierCommunity
 	lk.CreatedAt = time.Now().UTC()
 	lk.CreatedAtInt = lk.CreatedAt.Unix()
 	return &lk
